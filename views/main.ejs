@@ -1,0 +1,193 @@
+<%- include('templates/header') %>
+
+    <div class="container p-4">
+        <h1 class="text-center">Bienvenido a la subasta secreta!</h1>
+        <div class="row">
+            <!-- Koenigsegg -->
+            <div class="card col-md-3 bg-dark text-light p-3" style="width: 18rem;">
+                <img src="/img/c1.jpg" class="card-img-top rounded" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Koenigsegg Gamera</h5>
+                    <p class="card-text">Auto de la gran flauta.</p>
+                    <form action="/add" method="post">
+                        <input required type="text" name="amount">
+                        <div class="text-center p-2">
+                            <input type="hidden" name="product" value="1">
+                            <input type="submit" class="btn btn-primary" value="Rematar">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-title mt-3">
+                    <h4 class="text-center">Apuestas actuales</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table text-light">
+                        <!-- <thead>
+                        <tr>
+                          <th scope="col">User</th>
+                          <th scope="col">Apuesta</th>
+                        </tr>
+                      </thead> -->
+                        <tbody>
+                            <% for( let subasta of subastas ) { %>
+                                <% if (subasta.product == 1) { %>
+                                    <tr>
+                                        <td scope="row">
+                                            <%= subasta.User.name%>
+                                        </td>
+                                        <td>
+                                            $<%= subasta.amount%>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <input type="search" name="search" id="" autofocus>
+                        <button type="submit" class="btn btn-success">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Pioneer DDJ 400 -->
+            <div class="card col-md-3 bg-dark text-light p-3" style="width: 18rem;">
+                <img src="/img/c2.jpg" class="card-img-top rounded" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Pioneer DDJ 400</h5>
+                    <p class="card-text">Controlador de 2 canales</p>
+                    <form action="/add" method="post">
+                        <input type="text" name="amount">
+                        <div class="text-center p-2">
+                            <input type="hidden" name="product" value="2">
+                            <input type="submit" class="btn btn-primary" value="Rematar">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-title mt-3">
+                    <h4 class="text-center">Apuestas actuales</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table text-light">
+                        <tbody>
+                            <% for( let subasta of subastas ) { %>
+                                <% if (subasta.product == 2) { %>
+                                    <tr>
+                                        <td scope="row">
+                                            <%= subasta.User.name%>
+                                        </td>
+                                        <td>
+                                            $<%= subasta.amount%>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <input type="search" name="search" id="" autofocus>
+                        <button type="submit" class="btn btn-success">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- JBL Boom -->
+            <div class="card col-md-3 bg-dark text-light p-3" style="width: 18rem;">
+                <img src="/img/c3.jpg" class="card-img-top rounded" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">JBL Boom</h5>
+                    <p class="card-text">Suena buenardo</p>
+                    <form action="/add" method="post">
+                        <input type="text" name="amount">
+                        <div class="text-center p-2">
+                            <input type="hidden" name="product" value="3">
+                            <input type="submit" class="btn btn-primary" value="Rematar">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-title mt-3">
+                    <h4 class="text-center">Apuestas actuales</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table text-light">
+                        <tbody>
+                            <% for( let subasta of subastas ) { %>
+                                <% if (subasta.product == 3) { %>
+                                    <tr>
+                                        <td scope="row">
+                                            <%= subasta.User.name%>
+                                        </td>
+                                        <td>
+                                            $<%= subasta.amount%>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <input type="search" name="search" id="" autofocus>
+                        <button type="submit" class="btn btn-success">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+            <!-- Ferrari F8 Spider -->
+            <div class="card col-md-3 bg-dark text-light p-3" style="width: 18rem;">
+                <img src="/img/c4.jpg" class="card-img-top rounded" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Ferrari F8 Spider</h5>
+                    <p class="card-text">Otro auto de la gran flauta</p>
+                    <form action="/add" method="post">
+                        <input type="text" name="amount">
+                        <div class="text-center p-2">
+                            <input type="hidden" name="product" value="4">
+                            <input type="submit" class="btn btn-primary" value="Rematar">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-title mt-3">
+                    <h4 class="text-center">Apuestas actuales</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table text-light">
+                        <tbody>
+                            <% for( let subasta of subastas ) { %>
+                                <% if (subasta.product == 4) { %>
+                                    <tr>
+                                        <td scope="row">
+                                            <%= subasta.User.name%>
+                                        </td>
+                                        <td>
+                                            $<%= subasta.amount%>
+                                        </td>
+                                    </tr>
+                                <% } %>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col text-center">
+                        <input type="search" name="search" id="" autofocus>
+                        <button type="submit" class="btn btn-success">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- USER SCOREBOARD -->
+    <div class="container p-md-4">
+        <div class="row">
+            <div class="col text-right">
+                <a href="/result" class="btn btn-success">Terminar subasta</a>
+            </div>
+        </div>
+    </div>
+
+
+    <%- include('templates/footer') %>

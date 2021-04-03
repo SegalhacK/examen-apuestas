@@ -1,0 +1,39 @@
+</body>
+
+
+
+<script>
+
+
+    $(document).ready(function () {
+        $('#modalAdd').on('shown.bs.modal', function () {
+            $('#myInput').trigger('focus')
+        })
+
+        moment.locale("es");
+
+        toastr.options = {
+            "closeButton": true,
+            "progressBar": true,
+        }
+
+        bootbox.addLocale("pancho", {
+            OK: 'Aceptar',
+            CANCEL: 'Cancelar',
+            CONFIRM: 'Confirmar'
+        });
+
+            <% for (let error of errors) { %>
+            toastr.error("<%= error %>", "Error");
+            <% } %>
+
+            <% for (let mensaje of mensajes) { %>
+            toastr.success("<%= mensaje %>", "Mensaje del Sistema");
+            <% } %>
+
+            
+        });
+
+</script>
+
+</html>
