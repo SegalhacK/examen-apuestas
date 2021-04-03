@@ -15,6 +15,17 @@ function checkLogin(req, res, next) {
     next();
 }
 
+// function stopAuction(subasta) {
+//     const
+//     }
+//     revisa cada producto
+//         si hay productos sin apuestas
+//             motrar error
+//             redirigir al inicio
+//         si todos tienen apuestas
+//             next();
+// }
+
 router.get("/", checkLogin, async (req, res) => {
     const errors = req.flash("errors");
     const mensajes = req.flash("mensajes");
@@ -57,9 +68,23 @@ router.get('/result', checkLogin, async (req, res) => {
         include: [{ model: User }],
         order: [['amount', 'DESC']]
     });
+    
+    const oferta1 = winner.filter(x=>x.product == 1);
+    const oferta2 = winner.filter(x=>x.product == 2);  
+    const oferta3 = winner.filter(x=>x.product == 3);
+    const oferta4 = winner.filter(x=>x.product == 4);
+
+    if (oferta1.length == 0 || oferta2.length == 0 || oferta3.length == 0 || oferta4.length == 0) {
+        req.flash('errors', 'Tienes algún producto sin ofertar')
+        return res.redirect('/');
+    }
 
     const { name } = req.session.user
     res.render('result', { mensajes: [], errors: [], winner, name })
 });
 
+router.get('/clear', (req, res) => {
+    Subasta.destroy
+    res.redirect('/')
+})
 module.exports = router;
