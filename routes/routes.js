@@ -20,7 +20,7 @@ router.get("/", checkLogin, async (req, res) => {
     const mensajes = req.flash("mensajes");
     const subastas = await Subasta.findAll({
         include: [{ model: User }],
-        // order: ['amount', 'DESC']
+        order: [['amount', 'DESC']]
     });
 
     res.render("main", { errors, mensajes, subastas })
@@ -32,14 +32,15 @@ router.post('/add', checkLogin, async (req, res) => {
     const { id } = req.session.user
 
     try {
-
-        const subasta = await Subasta.create({
-            amount: amount,
-            product: product,
-            UserId: id
-        });
-
-        req.flash("mensajes", "Apuesta agregada correctamente");
+        // if (amount >= Subasta[0].amount) {
+            await Subasta.create({
+                amount: amount,
+                product: product,
+                UserId: id
+            });
+            
+            req.flash("mensajes", "Apuesta agregada correctamente");
+        // }
 
     } catch (err) {
         for (var key in err.errors) {
@@ -52,13 +53,12 @@ router.post('/add', checkLogin, async (req, res) => {
 });
 
 router.get('/result', checkLogin, async (req, res) => {
-    const subastas = await Subasta.findAll({
+    const winner = await Subasta.findAll({
         include: [{ model: User }],
-        // order: ['amount', 'DESC']
+        order: [['amount', 'DESC']]
     });
-    
+
     const { name } = req.session.user
-    const winner = subastas.sort()
     res.render('result', { mensajes: [], errors: [], winner, name })
 });
 
