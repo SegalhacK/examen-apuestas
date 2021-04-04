@@ -83,8 +83,11 @@ router.get('/result', checkLogin, async (req, res) => {
     res.render('result', { mensajes: [], errors: [], winner, name })
 });
 
-router.get('/clear', (req, res) => {
-    Subasta.destroy
+router.get('/clear', async (req, res) => {
+    await Subasta.destroy({
+        truncate: true,
+    });
+    
     res.redirect('/')
 })
 module.exports = router;

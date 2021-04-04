@@ -3,22 +3,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        Subasta
+        SilkRoad!
     </title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/font-awesome.min.css">
     <link rel="stylesheet" href="/css/toastr.min.css">
+    <link rel="stylesheet" href="/css/jquery.dataTables.min.css">
     <script src="/js/jquery-3.5.1.min.js"></script>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/toastr.min.js"></script>
     <script src="/js/bootbox.min.js"></script>
     <script src="/js/moment-with-locales.min.js"></script>
+
+    <script>
+        function search() {
+          // Declare variables
+          var input, filter, ul, li, a, i, txtValue;
+          input = document.getElementById('myInput');
+          filter = input.value.toUpperCase();
+          ul = document.getElementById("myUL");
+          li = ul.getElementsByTagName('li');
+        
+          // Loop through all list items, and hide those who don't match the search query
+          for (i = 0; i < li.length; i++) {
+            a = li[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+              li[i].style.display = "";
+            } else {
+              li[i].style.display = "none";
+            }
+          }
+        }
+        </script>
 </head>
 
 <body>
     <nav class="navbar navbar-expand-lg  sticky-top navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><strong> <i class="fa fa-rebel" aria-hidden="true"></i> SilkRoad!</strong></a>
+            <a class="navbar-brand" href="/"><strong> <i class="fa fa-rebel" aria-hidden="true"></i>
+                    SilkRoad!</strong></a>
 
 
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -26,21 +50,10 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/add">Agregar pregunta</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="/play">Jugar!</a>
-                    </li>
-                </ul>
-            </div>
-
             <a class="navbar-brand"></a>
             <div class="nav navbar-nav navbar-right">
-                <a href="/logout" class="navbar-brand"><strong><i class="fa fa-sign-out" aria-hidden="true"></i>
-                        Logout</strong></a>
+                <a href="/logout" class="navbar-brand">
+                    <strong><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</strong></a>
             </div>
         </div>
     </nav>
